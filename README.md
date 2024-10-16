@@ -44,7 +44,7 @@ This repository contains the test plan for the Dmoney Users API. The document pr
 
 | **Field**             | **Example Value**              |
 |-----------------------|--------------------------------|
-| 📧 Email              | `salman@roadtocareer.net`      |
+| 📧 Email              | `test@gmail.net`      |
 | 🔑 Password           | `1234`                         |
 | 🔐 Token              | `eyJhbGciOiJIUzI1NiIsInR5...`  |
 | 🆔 User ID            | `4153`                         |
@@ -55,13 +55,13 @@ This repository contains the test plan for the Dmoney Users API. The document pr
 
 | **Scenario**                        | **API Method**               | **Input Data**                                      | **Expected Output**                                                                                     |
 |-------------------------------------|------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| ✅ **Login with valid credentials**  | POST `/user/login`           | `{ "email": "salman@roadtocareer.net", "password": "1234" }` | Status: **200 OK** <br> Token returned and set as environment variable                                   |
-| 🚫 **Login with wrong email**        | POST `/user/login`           | `{ "email": "salman@grr", "password": "1234" }`    | Status: **404 Not Found** <br> Response: `{ "message": "User not found" }`                              |
-| 🚫 **Login with wrong password**     | POST `/user/login`           | `{ "email": "salman@roadtocareer.net", "password": "123" }` | Status: **401 Unauthorized** <br> Response: `{ "message": "Password incorrect" }`                        |
+| ✅ **Login with valid credentials**  | POST `/user/login`           | `{ "email": "test@gmail.net", "password": "1234" }` | Status: **200 OK** <br> Token returned and set as environment variable                                   |
+| 🚫 **Login with wrong email**        | POST `/user/login`           | `{ "email": "test@gmailt", "password": "1234" }`    | Status: **404 Not Found** <br> Response: `{ "message": "User not found" }`                              |
+| 🚫 **Login with wrong password**     | POST `/user/login`           | `{ "email": "test@gmail.net", "password": "123" }` | Status: **401 Unauthorized** <br> Response: `{ "message": "Password incorrect" }`                        |
 | 👥 **Get user list**                 | GET `/user/list`             | Authorization Token                                | Status: **200 OK** <br> Response: `{ "message": "User list", "users": [...] }`                          |
 | 🛑 **Get user list with invalid token** | GET `/user/list`          | Invalid Authorization Token                        | Status: **403 Forbidden** <br> Response: `{ "error": { "message": "Token expired" }}`                    |
 | ✏️ **Create a new user**             | POST `/user/create`          | `{ "name": "John Doe", "email": "john.doe@example.com", "password": "1234", "phone_number": "01504789428" }` | Status: **201 Created** <br> Response: `{ "message": "User created", "user": {...} }`                    |
-| 🚫 **Create existing user**          | POST `/user/create`          | `{ "name": "Salman Rahman", "email": "salman@roadtocareer.net", "password": "1234" }` | Status: **208 Already Reported** <br> Response: `{ "message": "User already exists" }`                   |
+| 🚫 **Create existing user**          | POST `/user/create`          | `{ "name": "test user", "email": "test@gmail.net", "password": "1234" }` | Status: **208 Already Reported** <br> Response: `{ "message": "User already exists" }`                   |
 | 🔄 **Update user details**           | PUT `/user/update/{id}`      | `{ "name": "John Doe", "email": "john.updated@example.com", "phone_number": "01504789428" }` | Status: **200 OK** <br> Response: `{ "message": "User updated successfully" }`                          |
 | ❌ **Delete user by ID**             | DELETE `/user/delete/{id}`   | User ID 4153                                       | Status: **200 OK** <br> Response: `{ "message": "User deleted successfully" }`                           |
 
